@@ -62,8 +62,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CamDirX: -0.5448603
-    - _CamDirY: 1.0160656
+    - _CamDirX: -0.89886624
+    - _CamDirY: -8.571552
     - _CamX: 0.46098801
     - _CamY: 0.26601532
     - _CamZ: 0.36262414
@@ -80,11 +80,11 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TimePassed: 0.5206285
+    - _TimePassed: 1.5899248
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _CamPos: {r: -1.1250358, g: 1.2875293, b: -0.4208369, a: 0}
+    - _CamPos: {r: 0.18263951, g: 1.0775656, b: -0.33985913, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

@@ -75,36 +75,30 @@ Shader "Unlit/Render Fractal"
 
             }
 
-            float4 dist(float px , float py , float pz)
+            float4 disttofractal(float px , float py , float pz)
             {
  
                 
                 float r;
                 int n = 0;
-                float3 z = float3 (px ,  py , pz);
+                float3 z = abs(float3 (px ,  py , pz));
                 
                 float s = 3;
                 float2 a;
 
-                while (n < 10) 
+                while (n < 12) 
                 {
          
                     //if (z.x < 0) z.x = -z.x;
                     //if (z.y < 0) z.y = -z.y;
                     //if (z.z < 0) z.z = -z.z;
-
                     /*
+
                     if(z.x + z.y < 0) z.xy = -z.yx;
                     if(z.x + z.z < 0) z.xz = -z.zx;
                     if(z.y +  z.z < 0) z.zy = -z.yz;
                     z = z * s - 0.5 * (s - 1.0);
 
-                    if p[0] < p[1]:
-                        p[[0,1]] = p[[1,0]]
-                    if p[0] < p[2]:
-                        p[[0,2]] = p[[2,0]]
-                    if p[1] < p[2]:
-                        p[[2,1]] = p[[1,2]]
                     */
 
                     z = abs(z);
@@ -157,7 +151,7 @@ Shader "Unlit/Render Fractal"
                 float n;
                 while (n < 100)
                 {
-                    distance = dist(r.x , r.y , r.z);
+                    distance = disttofractal(r.x , r.y , r.z);
                     if (distance.w < 0.00001)
                     {
                         cdist = -1;
@@ -175,7 +169,7 @@ Shader "Unlit/Render Fractal"
                 if (cdist > 0)
                 {
             
-                    return (2000000000 * cdist);
+                    return 100000; //(2000 * cdist);
                 }
                 else
                 {
@@ -194,7 +188,7 @@ Shader "Unlit/Render Fractal"
                 //fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 //UNITY_APPLY_FOG(i.fogCoord, col);
-                float cycles = trace(_CamPos , float2 (i.uv.x , i.uv.y) , float4 (sinx , cosx , siny , cosy));
+                float cycles = trace(_CamPos , 3 * i.uv , float4 (sinx , cosx , siny , cosy));
 
                 float4 col = ((float4(0.1 , 0.4 , 0.1 , 1) - (0.005 * cycles)));
                 //col = tex2D(_MainTex , float2(n, _Color));   
